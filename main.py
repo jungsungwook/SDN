@@ -6,6 +6,7 @@ import win32gui
 import pyautogui
 import pygetwindow as gw
 import pyMeow as pm
+import ctypes
 
 def screenshot(window_title="MapleStory"):
     if window_title:
@@ -37,12 +38,4 @@ def getWindows():
     print(title)
 
 if __name__ == '__main__':
-    print("start")
-    process = pm.open_process(processName="KakaoTalk.exe")
-    base =  pm.get_module(process, "KakaoTalk.exe")["base"]
-    print(process)
-    pm.overlay_init(fps=60)
-    while pm.overlay_loop():
-        pm.begin_drawing()
-        pm.draw_fps(10,10)
-        pm.end_drawing();
+    print("# start")
