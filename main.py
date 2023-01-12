@@ -6,7 +6,7 @@ import win32gui
 import pyautogui
 import pygetwindow as gw
 import pyMeow as pm
-import ctypes
+from ctypes import *
 
 def screenshot(window_title="MapleStory"):
     if window_title:
