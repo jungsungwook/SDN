@@ -8,6 +8,21 @@ import pygetwindow as gw
 import pyMeow as pm
 from ctypes import *
 
+# mouseleftdown = 1
+# mouseleftup = 2
+# mouserightdown = 4
+# mouserightup = 8
+# mousewheeldown = 16
+# mousewheelup = 32
+
+dd_dll = windll.LoadLibrary("./DD94687.64.dll")
+st = dd_dll.DD_btn(0)
+
+def left_click_dd(x, y):
+    dd_dll.DD_mov(x, y)
+    dd_dll.DD_btn(1)
+    dd_dll.DD_btn(2)
+    
 def screenshot(window_title="MapleStory"):
     if window_title:
         hwnd = win32gui.FindWindow(None, window_title)
@@ -39,3 +54,11 @@ def getWindows():
 
 if __name__ == '__main__':
     print("# start")
+    while True:
+        x, y = pyautogui.position()
+        print(pm.pixel_at_mouse())
+        # 마우스 포인터의 색깔이 검은색이면
+        if(pm.pixel_at_mouse() == {'x': 0, 'y': 0, 'color': {'r': 40, 'g': 42, 'b': 54, 'a': 255}}):
+            # 현재 포인터 가져오기
+            left_click_dd(x, y)
+            print("# click -->", x, y)
